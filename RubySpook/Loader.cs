@@ -64,6 +64,7 @@ namespace RubySpook
 
         const int CONSOLE_HIDE = 0;
         const int CONSOLE_SHOW = 5;
+        const string version = "v1.0";
 
         private static void InitConsole()
         {
@@ -74,7 +75,7 @@ namespace RubySpook
             });
             Console.SetIn(new StreamReader(Console.OpenStandardInput()));
             Console.Clear();
-            Console.WriteLine("[UAI] RubySpook (v1) loaded. Powered By 0Harmony by Pardeike and UnityAssemblyInjector by Avail");
+            Console.WriteLine($"[UAI] RubySpook {version} loaded. Powered By 0Harmony by Pardeike and UnityAssemblyInjector by Avail");
             Console.Title = "RubySpook";
         }
 
