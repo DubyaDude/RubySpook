@@ -26,7 +26,7 @@ namespace RubySpook.Modules
         {
             SceneManager.sceneLoaded -= WaitingForAssemblies;
             harmony.Patch(typeof(PhotonNetwork).GetMethods().First(x=> x.Name == "CreateRoom" && x.GetParameters()?.Length == 4), GetPatch(nameof(OnPreCreateRoomPatch)), null, null);
-            harmony.Patch(typeof(ServerListItem).GetMethod("SetUI"), GetPatch(nameof(OnPostSetUIPatch)), null, null);
+            harmony.Patch(typeof(ServerListItem).GetMethod("SetUI"), null, GetPatch(nameof(OnPostSetUIPatch)), null);
         }
 
         private static bool OnPreCreateRoomPatch(ref RoomOptions roomOptions)
