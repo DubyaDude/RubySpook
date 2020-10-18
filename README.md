@@ -14,3 +14,7 @@
 - Drag everything from the ZIP to that folder (should end up looking like the screenshot below)
 
  ![](https://i.imgur.com/uD8u0tI.png "Phasmophobia")
+
+## Credit
+- [0Harmony by Pardeike](https://github.com/pardeike/Harmony)
+- [UnityAssemblyInjector by Avail](https://github.com/avail/UnityAssemblyInjector)
