@@ -18,7 +18,8 @@ namespace RubySpook.Modules
         private static Harmony harmony;
         public static void Init()
         {
-            harmony = new Harmony("RubySpook_MegaLobby");
+            harmony = new Harmony("RubySpook_MegaLobby"); 
+            harmony.Patch(typeof(ServerListItem).GetMethod("SetUI"), null, GetPatch(nameof(OnPostSetUIPatch)), null);
             SceneManager.sceneLoaded += WaitingForAssemblies;
         }
 
@@ -26,7 +27,6 @@ namespace RubySpook.Modules
         {
             SceneManager.sceneLoaded -= WaitingForAssemblies;
             harmony.Patch(typeof(PhotonNetwork).GetMethods().First(x=> x.Name == "CreateRoom" && x.GetParameters()?.Length == 4), GetPatch(nameof(OnPreCreateRoomPatch)), null, null);
-            harmony.Patch(typeof(ServerListItem).GetMethod("SetUI"), null, GetPatch(nameof(OnPostSetUIPatch)), null);
         }
 
         private static bool OnPreCreateRoomPatch(ref RoomOptions roomOptions)
@@ -38,9 +38,10 @@ namespace RubySpook.Modules
             }
             return true;
         }
-        private static void OnPostSetUIPatch(ServerListItem __instance, string population, ref RoomOptions roomOptions)
+        private static void OnPostSetUIPatch(ServerListItem __instance, string population, RoomInfo info)
         {
-            __instance.serverPopulation.text = population + "/" + roomOptions.MaxPlayers;
+            if (info.MaxPlayers != 4)
+                __instance.serverPopulation.text = population + "/" + info.MaxPlayers;
         }
     }
 }
