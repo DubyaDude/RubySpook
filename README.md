@@ -1,4 +1,4 @@
-# RubySpook - Phasmophobia Mod/Cheat
+# [OUTDATED] RubySpook - Phasmophobia Mod/Cheat
  ## Features
 - Cheats - Unlimited Money, EXP, and Items
 - SpeechWriter - Writes any recognized phrase you say into Console (helps people with accents!)
